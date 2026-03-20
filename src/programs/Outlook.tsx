@@ -16,40 +16,53 @@ import { addTab } from "@/redux/tabSlice";
 import store from "@/redux/store";
 import { useSelector } from "react-redux";
 import { RootState } from "@/types";
+import emailjs from "emailjs-com";
 
 const Outlook = () => {
   const currTabID = useSelector((state: RootState) => state.tab.id);
   const [from, setFrom] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const API_KEY = process.env.NEXT_PUBLIC_MAILGUN_API;
-  const FROM_EMAIL = "adityaraj112341@gmail.com";
-  const TO_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
-  const axios = require("axios");
   const captchaRef = React.useRef(null);
   const emailRef = React.useRef<HTMLInputElement>(null);
   const subjectRef = React.useRef<HTMLInputElement>(null);
   const messageRef = React.useRef<HTMLTextAreaElement>(null);
+  
   const sendEmail = async () => {
     if (!from || !subject || !message) {
       return;
     }
     
+    // Check if variables are configured
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_8hmo1v4";
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!templateId || !publicKey || templateId === "your_template_id_here") {
+      const configTab = {
+        ...AppDirectory.get(5),
+        id: uuidv4(),
+        zIndex: currTabID,
+        title: "Error - Not Configured",
+        message: "EmailJS is not fully configured. Please provide Template ID and Public Key in your environment variables.",
+      };
+      store.dispatch(addTab(configTab));
+      return;
+    }
+
+    const templateParams = {
+      from_email: from,
+      subject: subject,
+      message: message,
+    };
+
     try {
-      await axios({
-        method: "post",
-        url: `https://api.mailgun.net/v3/pohwp.dev/messages`,
-        auth: {
-          username: "api",
-          password: API_KEY,
-        },
-        params: {
-          from: FROM_EMAIL,
-          to: TO_EMAIL,
-          subject: "New Message From A Visitor: " + subject,
-          text: "From: " + from + "\nMessage: " + message,
-        },
-      });
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
       
       // Success handling
       const newTab = {
@@ -68,14 +81,14 @@ const Outlook = () => {
       if (emailRef.current) emailRef.current.value = "";
       if (subjectRef.current) subjectRef.current.value = "";
       if (messageRef.current) messageRef.current.value = "";
-    } catch (error) {
+    } catch (error: any) {
       // Show error to user
       const errorTab = {
         ...AppDirectory.get(5),
         id: uuidv4(),
         zIndex: currTabID,
         title: "Error - Email Failed",
-        message: "Failed to send email. Please try again later.",
+        message: `Failed to send email. ${error?.text || "Please try again later."}`,
       };
       store.dispatch(addTab(errorTab));
     }

@@ -1,86 +1,37 @@
-.main {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #0f1015, #1d1e26);
-  display: flex;
-  flex-direction: column;
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background: rgba(20, 21, 28, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  z-index: 10;
-}
-
-.logoTitle {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  background: linear-gradient(90deg, #28d07e, #01b4e4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.mockBtn {
-  cursor: pointer;
-  font-size: 20px;
-  color: #888;
-  transition: all 0.2s ease;
-}
-
-.mockBtn:hover {
-  color: white;
-  transform: scale(1.1);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
-
-.mockBtnPlay {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #28d07e, #0093e9);
-  border-radius: 50%;
-  font-size: 16px;
-  color: #fff;
-  padding-left: 3px;
-  box-shadow: 0 0 12px rgba(40, 208, 126, 0.3);
-  transition: all 0.2s ease;
-}
-
-.mockBtnPlay:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(40, 208, 126, 0.6);
-}
-
-.iframeContainer {
-  flex: 1;
-  width: 100%;
-  background: #0a0a0c;
-  padding: 15px;
-  box-sizing: border-box;
-}
-
-.iframeContainer iframe {
-  border-radius: 12px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-}
+.player { width: 100%; height: 100%; background: #1a1a2e; border: 2px solid #4a90d9; display: flex; flex-direction: column; font-family: Tahoma, sans-serif; overflow: hidden; }
+.titlebar { background: linear-gradient(180deg, #2a5bd7, #1a3fa0); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; }
+.titleLeft { display: flex; align-items: center; gap: 6px; color: white; font-size: 12px; font-weight: bold; }
+.titleIcon { width: 16px; height: 16px; background: #ff6b00; border-radius: 50%; border: 2px solid #ff9900; }
+.titleBtns { display: flex; gap: 4px; color: white; font-size: 11px; cursor: pointer; }
+.close { color: #ff6b6b; }
+.menubar { background: #f0efe8; border-bottom: 1px solid #999; padding: 2px 4px; display: flex; gap: 2px; }
+.menuItem { padding: 2px 8px; font-size: 11px; color: #000; cursor: pointer; }
+.menuItem:hover { background: #316ac5; color: white; }
+.body { display: flex; flex: 1; overflow: hidden; }
+.mainArea { flex: 1; background: #000; display: flex; flex-direction: column; }
+.visualizer { width: 100%; height: 140px; background: #000; }
+.nowPlaying { color: #7ec8e3; font-size: 11px; padding: 6px 10px; background: #111; }
+.nowPlaying span { color: white; font-weight: bold; }
+.sidebar { width: 180px; background: #f0efe8; border-left: 1px solid #999; display: flex; flex-direction: column; overflow: hidden; }
+.sidebarHeader { background: #316ac5; color: white; font-size: 11px; font-weight: bold; padding: 4px 8px; }
+.playlist { flex: 1; overflow-y: auto; }
+.track { padding: 5px 8px; font-size: 11px; color: #000; cursor: pointer; display: flex; gap: 6px; border-bottom: 1px solid #ddd; }
+.track:hover { background: #cce8ff; }
+.active { background: #316ac5 !important; color: white !important; }
+.trackNum { color: #888; font-size: 10px; min-width: 14px; }
+.trackArtist { font-size: 10px; color: #666; }
+.active .trackArtist { color: #cce8ff; }
+.active .trackNum { color: #cce8ff; }
+.controls { background: #2a2a3e; padding: 6px 10px; border-top: 1px solid #4a90d9; }
+.progressBar { background: #111; height: 6px; border-radius: 3px; margin-bottom: 6px; cursor: pointer; }
+.progressFill { background: #4a90d9; height: 100%; border-radius: 3px; transition: width 0.1s; }
+.ctrlRow { display: flex; align-items: center; gap: 10px; }
+.btn { background: none; border: none; color: #aaa; cursor: pointer; font-size: 16px; }
+.btn:hover { color: white; }
+.playBtn { background: #316ac5; color: white; border-radius: 50%; width: 28px; height: 28px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+.time { color: #7ec8e3; font-size: 10px; font-family: monospace; margin-right: auto; }
+.vol { width: 60px; accent-color: #4a90d9; }
+.searchSection { margin-left: auto; display: flex; gap: 4px; padding-right: 4px; align-items: center; }
+.searchBar { padding: 2px 6px; border: 1px solid #999; font-size: 11px; height: 18px; outline: none; border-radius: 2px; background: white; color: black; }
+.searchBtn { background: #e1e1e1; color: #000; border: 1px solid #999; padding: 0px 8px; font-size: 10px; cursor: pointer; height: 18px; border-radius: 2px; font-weight: bold; }
+.searchBtn:hover { background: #cce8ff; }

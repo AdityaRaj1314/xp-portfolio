@@ -13,6 +13,7 @@ import solitare from "../../assets/solitaire.png";
 import linkedin from "../../assets/linkedin.png";
 import instagramIcon from "../../assets/instagram.png";
 import notepadIcon from "../../assets/notepad.png";
+import musicIcon from "../../assets/my-music.png";
 import WinForm from "components/WinForm/WinForm";
 import { useEffect, useState } from "react";
 import store from "@/redux/store";
@@ -159,6 +160,12 @@ export default function Home() {
             doubleClick={() => handleRunApp(12)}
             title="Notepad"
             img={notepadIcon}
+          />
+          <DesktopIcon
+            appID={10}
+            doubleClick={() => handleRunApp(10)}
+            title="Music Player"
+            img={musicIcon}
           />
           {Tabs.map((tab, index) => {
             return tab.isMinimized ? (

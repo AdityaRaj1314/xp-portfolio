@@ -15,7 +15,7 @@ import mycomputer from "../../assets/mycomputer.png";
 import gallery from "../../assets/folder_image.png";
 import outlook from "../../assets/outlook.png";
 import paint from "../../assets/paint.png";
-import folder_music from "../../assets/folder_music.png";
+import folder_music from "../../assets/my-music.png";
 import skillIcon from "../../assets/skill.png";
 import notepadIcon from "../../assets/notepad.png";
 
@@ -269,7 +269,7 @@ export const AppDirectory: Map<number, Tab> = new Map([
     10,
     {
       id: 0,
-      title: "JioSaavn",
+      title: "Music Player",
       message: "",
       Icon: folder_music,
       isMinimized: false,
@@ -376,7 +376,7 @@ export const WorkData = [
       TechIcon.REDUX,
     ],
     gallery: [portfolio_1, portfolio_2, portfolio_3],
-    overview: `An immersive, interactive personal portfolio website meticulously designed to replicate the classic Windows XP operating system experience. Built from the ground up using React and Next.js, this web application features a fully functional robust Start Menu, interactive desktop icons, draggable and z-indexed window components, and custom-built applications. It includes an integrated JioSaavn music player, an automated competitive programming skills visualizer, and a responsive photography gallery. The project showcases high-level attention to UI/UX nostalgic details and heavily relies on complex state management architectures utilizing Redux.`,
+    overview: `An immersive, interactive personal portfolio website meticulously designed to replicate the classic Windows XP operating system experience. Built from the ground up using React and Next.js, this web application features a fully functional robust Start Menu, interactive desktop icons, draggable and z-indexed window components, and custom-built applications. It includes an integrated music player, an automated competitive programming skills visualizer, and a responsive photography gallery. The project showcases high-level attention to UI/UX nostalgic details and heavily relies on complex state management architectures utilizing Redux.`,
   },
 ] as WorkContent[];
 
