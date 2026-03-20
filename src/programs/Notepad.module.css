@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  font-family: Tahoma, 'Segoe UI', sans-serif;
+}
+
+.menubar {
+  display: flex;
+  background-color: #ece9d8;
+  border-bottom: 1px solid #d5d5d5;
+  padding: 2px 4px;
+}
+
+.menuItem {
+  padding: 2px 6px;
+  font-size: 11px;
+  color: #000;
+  cursor: default; 
+  user-select: none;
+}
+
+.menuItem:hover {
+  background-color: #316ac5;
+  color: #fff;
+}
+
+.textarea {
+  flex: 1;
+  border: none;
+  resize: none;
+  padding: 5px;
+  font-family: 'Lucida Console', monospace;
+  font-size: 13px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}

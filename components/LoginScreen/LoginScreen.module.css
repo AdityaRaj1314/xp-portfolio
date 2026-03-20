@@ -1,0 +1,196 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #5a7edc;
+  display: flex;
+  flex-direction: column;
+  z-index: 9998;
+  font-family: Tahoma, 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+/* Authentic XP Login Screen has a grid-like texture */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
+  z-index: 1;
+}
+
+.topBar {
+  height: 100px;
+  background: linear-gradient(180deg, #001f78 0%, #173db2 100%);
+  width: 100%;
+  border-bottom: 2px solid #fff;
+  z-index: 5;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.bottomBar {
+  height: 90px;
+  background: linear-gradient(0deg, #001f78 0%, #173db2 100%);
+  width: 100%;
+  border-top: 2px solid #f68c17;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+}
+
+.leftSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 50px;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.logoTextWrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.logoWindows {
+  font-style: italic;
+  font-size: 55px;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+}
+
+.logoXp {
+  color: #ff6a00;
+  font-size: 35px;
+  margin-left: 5px;
+  font-style: normal;
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.divider {
+  width: 2px;
+  height: 300px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.5), transparent);
+  margin: 0 20px;
+}
+
+.rightSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50px;
+}
+
+.userBlock {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  width: max-content;
+  transition: background-color 0.2s;
+}
+
+.userBlock:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.userIconWrapper {
+  width: 65px;
+  height: 65px;
+  border: 2px solid white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.userImage {
+  object-fit: cover;
+}
+
+.userInfo {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.userName {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.userRole {
+  font-size: 14px;
+  margin: 0;
+  color: #dbdbdb;
+  font-weight: bold;
+}
+
+.turnOffButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.turnOffButton:hover span {
+  text-decoration: underline;
+}
+
+.powerIcon {
+  width: 32px;
+  height: 32px;
+  background-color: #d13030;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.powerIcon::after {
+  content: "⏻";
+  font-size: 18px;
+}
+
+.fadeOutScreen {
+  opacity: 0 !important;
+  transition: opacity 1.8s ease-in-out;
+}

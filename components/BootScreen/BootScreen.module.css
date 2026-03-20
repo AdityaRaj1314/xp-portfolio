@@ -1,0 +1,105 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoImageWrapper {
+  margin-bottom: 20px;
+}
+
+.logoGroup {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.windowsXp {
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.xpText {
+  color: #fb6a02;
+  font-size: 50px;
+  margin-left: 10px;
+  margin-top: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: -3px;
+}
+
+.loadingBarContainer {
+  margin-top: 20px;
+}
+
+.loadingBox {
+  width: 250px;
+  height: 22px;
+  border: 2px solid #b2b2b2;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 2px;
+}
+
+.loadingBlocks {
+  width: 44px; /* Matches exactly 3 segments */
+  height: 14px;
+  background: repeating-linear-gradient(
+    90deg,
+    #3763eb 0px,
+    #3763eb 12px,
+    transparent 12px,
+    transparent 16px
+  );
+  border-radius: 2px;
+  position: absolute;
+  top: 2px;
+  animation: slide 1.5s infinite linear;
+}
+
+.footer {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.copyright {
+  font-weight: 300;
+}
+
+.microsoftLogo {
+  font-weight: 700;
+  font-size: 24px;
+  font-style: italic;
+}
+
+@keyframes slide {
+  0% { left: -60px; }
+  100% { left: 260px; }
+}

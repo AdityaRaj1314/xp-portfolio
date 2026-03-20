@@ -1,0 +1,136 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: grayscale(1);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, backdrop-filter 0.5s ease-in-out;
+}
+
+.fadeIn {
+  opacity: 1;
+  backdrop-filter: grayscale(1) brightness(0.7);
+}
+
+.fadeOut {
+  opacity: 0;
+  backdrop-filter: grayscale(0) brightness(1);
+}
+
+.dialog {
+  width: 320px;
+  background: linear-gradient(to bottom, #5a7edc 0%, #3e5eb5 100%);
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Tahoma, "Segoe UI", sans-serif;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background: linear-gradient(to right, #0a246a 0%, #a6caf0 100%);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.flag {
+  display: flex;
+  font-size: 10px;
+  gap: 1px;
+}
+
+.content {
+  padding: 30px 20px;
+  flex: 1;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.actionBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+  color: white;
+  font-size: 11px;
+}
+
+.actionBtn span {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.actionBtn:hover .iconContainer {
+  filter: brightness(1.1);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.iconContainer {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5), 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.bottombar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background: linear-gradient(to bottom, #4a6ccc 0%, #2f4ba6 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cancelBtn {
+  background: linear-gradient(to bottom, #ece6e0, #cfc1b0);
+  border: 1px solid #7a7a7a;
+  box-shadow: inset 1px 1px 1px #fff;
+  border-radius: 3px;
+  padding: 3px 15px;
+  font-family: Tahoma, "Segoe UI", sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.cancelBtn:active {
+  background: #cfc1b0;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.screenBlackout {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 10001; /* Above dialog content */
+  animation: blackoutFade 2.2s ease-in-out forwards;
+  pointer-events: none;
+}
+
+@keyframes blackoutFade {
+  0% { opacity: 0; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}

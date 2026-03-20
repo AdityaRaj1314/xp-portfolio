@@ -1,0 +1,141 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: auto;
+}
+
+.leftpanel {
+  width: 300px;
+  max-height: 100%;
+  background: linear-gradient(rgb(116, 138, 255) 0%, rgb(64, 87, 211) 100%);
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.leftpanel::-webkit-scrollbar {
+  width: 15px;
+}
+
+.leftpanel::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 2px solid #ddd;
+}
+
+.rightpanel::-webkit-scrollbar-button {
+  display: none;
+}
+
+.rightpanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
+  color: white;
+  background-color: #6687ff;
+  border-radius: 15px;
+  box-shadow: 2px 2px #959393;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  gap: 10px;
+  background-color: #ddd;
+  border-radius: 15px;
+  font-size: 16px;
+  margin: 10px 0;
+  box-shadow: 2px 2px #959393;
+}
+
+.accordion_content_item {
+  margin: 5px 0px;
+  cursor: pointer;
+  padding: 4px;
+  background: transparent;
+}
+
+.accordion_content_item:hover {
+  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.accordion_content_text {
+  font-size: 12px;
+  line-height: 14px;
+  color: rgb(12, 50, 125);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statsGrid {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+  min-width: 120px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2f4ba6;
+  margin-top: 5px;
+}
+
+.profile_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 210px;
+  gap: 10px;
+  height: 50px;
+  background-color: #3e5eb5;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.profile_button:hover {
+  background-color: #2f4ba6;
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.4);
+}

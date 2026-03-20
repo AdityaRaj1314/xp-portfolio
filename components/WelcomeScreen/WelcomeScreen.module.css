@@ -1,0 +1,90 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    #1A3494 0%,
+    #3A5BC7 45%,
+    #1A3494 100%
+  );
+}
+
+.stageWelcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.welcomeText {
+  font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adds that slight Windows depth */
+  font-size: 52px;
+  opacity: 0;
+  animation: xpWelcomePop 0.6s 0.15s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+@keyframes xpWelcomePop {
+  0%   { opacity: 0; transform: scale(0.85); }
+  60%  { opacity: 1; transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1);    }
+}
+
+.welcomeTrack {
+  width: 210px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  padding: 1px;
+  animation: fadeTrackIn 0.4s 0.55s ease forwards;
+}
+
+@keyframes fadeTrackIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.welcomeFill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.85) 0px,
+    rgba(255,255,255,0.85) 7px,
+    transparent 7px,
+    transparent 9px
+  );
+  border-radius: 2px;
+  transition: width 2.8s steps(21, end);
+}
+
+.fadeIn {
+  animation: containerFadeIn 0.4s ease forwards;
+}
+
+.fadeOut {
+  animation: containerFadeOut 0.5s ease forwards;
+}
+
+@keyframes containerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes containerFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
