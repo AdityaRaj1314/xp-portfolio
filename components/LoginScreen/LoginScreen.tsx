@@ -32,7 +32,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onShutdown }) => {
           <div className={styles.logo}>
             <Image src={xpLogo} alt="XP Logo" width={140} height={100} style={{ objectFit: 'contain' }} />
             <div className={styles.logoTextWrapper}>
-              <span className={styles.logoWindows}>Arscker's</span>
+              <span className={styles.logoWindows}>Arscker&apos;s</span>
               <span className={styles.logoXp}>xp</span>
             </div>
           </div>

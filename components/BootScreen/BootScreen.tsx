@@ -24,7 +24,7 @@ const BootScreen: React.FC<BootScreenProps> = ({ onComplete }) => {
         </div>
         <div className={styles.logoGroup}>
           <div className={styles.windowsXp}>
-            Arscker's<span className={styles.xpText}> xp</span>
+            Arscker&apos;s<span className={styles.xpText}> xp</span>
           </div>
         </div>
         <div className={styles.loadingBarContainer}>
