@@ -47,7 +47,7 @@ const StartMenu = ({ menuControl }: StartMenuProps) => {
   };
 
   const handleOpenResume = () => {
-    window.open("./AdityaResume (16).pdf", "_blank");
+    handleRunApp(13);
   };
 
   const handleOpenLinkedin = () => {

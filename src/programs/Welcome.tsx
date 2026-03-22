@@ -60,6 +60,12 @@ const Welcome = ({ id }: props) => {
   useEffect(() => {
     setAboutmeView(backBtnActive);
   }, [backBtnActive]);
+
+  useEffect(() => {
+    const audio = new Audio("/sounds/error.mp3");
+    audio.play().catch((e) => console.log("Audio play failed:", e));
+  }, []);
+
   return (
     <div className={styles.main}>
       {!aboutmeView ? (
@@ -120,7 +126,7 @@ const Welcome = ({ id }: props) => {
                 text={"My Resume"}
                 tooltip="My Curriculum Vitae"
                 onClick={() => {
-                  window.open("./AdityaResume (16).pdf");
+                  handleRunApp(13);
                 }}
               />
             </div>

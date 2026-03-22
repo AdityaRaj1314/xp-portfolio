@@ -38,3 +38,34 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.menuContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #999;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #000;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdownItem:hover {
+  background-color: #316ac5;
+  color: #fff;
+}

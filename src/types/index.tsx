@@ -40,7 +40,9 @@ export enum App {
   MYMUSIC,
   MYSKILLS,
   NOTEPAD,
+  RESUME_VIEWER,
 }
+
 
 export enum WorkType {
   PERSONAL = "Personal Projects",

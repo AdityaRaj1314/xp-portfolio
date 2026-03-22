@@ -55,7 +55,7 @@ const WinToolBar = ({ title, icon, programType, id }: props) => {
         <div className={styles.winlogo} />
       </div>
 
-      {programType !== App.OUTLOOK && (
+      {programType !== App.OUTLOOK && programType !== App.RESUME_VIEWER && (
         <div>
           <div className={styles.toolbar_icon}>
             <div

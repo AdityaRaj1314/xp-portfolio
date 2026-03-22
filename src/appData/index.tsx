@@ -307,7 +307,23 @@ export const AppDirectory: Map<number, Tab> = new Map([
       backBtnActive: false,
     },
   ],
+  [
+    13,
+    {
+      id: 0,
+      title: "My Resume",
+      message: "",
+      Icon: require("../../assets/pdf.png"),
+      isMinimized: false,
+      zIndex: 0,
+      program: App.RESUME_VIEWER,
+      prompt: false,
+      backBtnActive: false,
+    },
+  ],
 ]);
+
+
 
 export const WorkAccordionTitles = [
   WorkType.PERSONAL,

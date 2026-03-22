@@ -35,6 +35,7 @@ import BootScreen from "components/BootScreen/BootScreen";
 import LoginScreen from "components/LoginScreen/LoginScreen";
 import WelcomeScreen from "components/WelcomeScreen/WelcomeScreen";
 import Notepad from "@/programs/Notepad";
+import ResumeViewer from "@/programs/ResumeViewer";
 import { setTurnOffDialogOpen } from "@/redux/systemSlice";
 
 export default function Home() {
@@ -68,6 +69,20 @@ export default function Home() {
   };
 
   const [appState, setAppState] = useState<"BOOT" | "LOGIN" | "WELCOME" | "DESKTOP">("BOOT");
+
+  useEffect(() => {
+    const handleFirstClick = () => {
+      if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch((err) => {
+          console.log(`Error attempting to enable fullscreen mode: ${err.message}`);
+        });
+      }
+      document.removeEventListener("click", handleFirstClick);
+    };
+    document.addEventListener("click", handleFirstClick);
+
+    return () => document.removeEventListener("click", handleFirstClick);
+  }, []);
 
   useEffect(() => {
     if (appState === "BOOT") {
@@ -120,7 +135,7 @@ export default function Home() {
           />
           <DesktopIcon
             appID={3}
-            doubleClick={handleOpenResume}
+            doubleClick={() => handleRunApp(13)}
             title="My Resume"
             img={pdf}
           />
@@ -205,16 +220,19 @@ export default function Home() {
                   <MySkills id={tab.id} />
                 ) : tab.program === App.NOTEPAD ? (
                   <Notepad />
+                ) : tab.program === App.RESUME_VIEWER ? (
+                  <ResumeViewer id={tab.id} />
                 ) : null}
+
               </WinForm>
             );
           })}
         </div>
         <StartBar />
         {turnOffDialogOpen && (
-          <TurnOffDialog 
-            onRestart={() => setAppState("BOOT")} 
-            onShutdown={() => setAppState("BOOT")} 
+          <TurnOffDialog
+            onRestart={() => setAppState("BOOT")}
+            onShutdown={() => setAppState("BOOT")}
           />
         )}
       </main>

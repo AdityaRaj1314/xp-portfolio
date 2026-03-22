@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  background-color: #ede9d3;
+  padding: 6px 12px;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+.toolbarItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-family: Tahoma;
+}
+
+.toolbarItem:hover {
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  box-shadow: 1px 1px #b9b6aa;
+}
+
+.toolbarItem:active {
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  box-shadow: -1px -1px #b9b6aa;
+}
+
+.viewport {
+  flex-grow: 1;
+  overflow: hidden; /* Let the iframe deal with scrolling internally */
+  background-color: #fff;
+  width: 100%;
+}
+
+.bottomBar {
+  background-color: #ede9d3;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: #333;
+  border-top: 2px solid rgba(0,0,0,0.1);
+  font-family: Tahoma;
+}
