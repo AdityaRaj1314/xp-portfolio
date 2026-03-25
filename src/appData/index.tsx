@@ -394,6 +394,19 @@ export const WorkData = [
     gallery: [portfolio_1, portfolio_2, portfolio_3],
     overview: `An immersive, interactive personal portfolio website meticulously designed to replicate the classic Windows XP operating system experience. Built from the ground up using React and Next.js, this web application features a fully functional robust Start Menu, interactive desktop icons, draggable and z-indexed window components, and custom-built applications. It includes an integrated music player, an automated competitive programming skills visualizer, and a responsive photography gallery. The project showcases high-level attention to UI/UX nostalgic details and heavily relies on complex state management architectures utilizing Redux.`,
   },
+  {
+    id: 18,
+    title: "Line Following Robot with Arduino",
+    date: "2024 - 2025",
+    gitURL: "",
+    techstack: [
+      TechIcon.ARDUINO,
+      TechIcon.C,
+      TechIcon.CPP,
+    ],
+    gallery: [],
+    overview: `A light-following robot is a simple autonomous robot that detects light and moves toward it. It’s a popular beginner project in robotics because it combines basic electronics, sensors, and control logic.`,
+  },
 ] as WorkContent[];
 
 export const WorkAccordionContent = [
@@ -424,6 +437,13 @@ export const WorkAccordionContent = [
     icon: emptyfile,
     title: "Windows XP Retro Portfolio",
     content: WorkData[WorkData.findIndex((x) => x.id === 17)],
+  },
+  {
+    id: 18,
+    type: WorkType.PERSONAL,
+    icon: emptyfile,
+    title: "Line Following Robot with Arduino",
+    content: WorkData[WorkData.findIndex((x) => x.id === 18)],
   },
 ] as WorkFile[];
 

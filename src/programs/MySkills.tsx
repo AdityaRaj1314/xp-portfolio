@@ -74,6 +74,7 @@ interface Props {
 }
 
 const MySkills = ({ id }: Props) => {
+  const [platforms, setPlatforms] = useState<SkillData[]>(Platforms);
   const [currDisplay, setCurrDisplay] = useState<SkillData | null>(null);
 
   const backBtnActive = useSelector(
@@ -81,6 +82,90 @@ const MySkills = ({ id }: Props) => {
       state.tab.tray[state.tab.tray.findIndex((tab) => tab.id === id)]
         .backBtnActive
   );
+
+  useEffect(() => {
+    const fetchPlatformData = async () => {
+      try {
+        const [cfInfoRes, cfStatusRes, lcRes, ccRes] = await Promise.all([
+          fetch("https://codeforces.com/api/user.info?handles=Arscker").then(res => res.json()).catch(() => ({ status: "FAILED" })),
+          fetch("https://codeforces.com/api/user.status?handle=Arscker").then(res => res.json()).catch(() => ({ status: "FAILED" })),
+          fetch("/api/leetcode?username=Arsckersan1314&limit=0").then(res => res.json()).catch(() => ({ error: true })),
+          fetch("/api/codechef?username=sit1si23cs008").then(res => res.json()).catch(() => ({ error: true }))
+        ]);
+
+        let cfSolvedCount = "100+";
+        if (cfStatusRes.status === "OK") {
+          const submissions = cfStatusRes.result;
+          const solvedProblems = new Set();
+          submissions.forEach((sub: any) => {
+            if (sub.verdict === "OK" && sub.problem && sub.problem.name) {
+              solvedProblems.add(sub.problem.name);
+            }
+          });
+          cfSolvedCount = solvedProblems.size.toString();
+        }
+
+        setPlatforms(prev => prev.map(p => {
+          let updatedPlatform = { ...p };
+          if (p.name === "Codeforces" && cfInfoRes.status === "OK" && cfInfoRes.result?.length > 0) {
+            const info = cfInfoRes.result[0];
+            updatedPlatform.rating = info.rating ? info.rating.toString() : p.rating;
+            updatedPlatform.rank = info.rank ? info.rank.charAt(0).toUpperCase() + info.rank.slice(1) : p.rank;
+            updatedPlatform.solved = cfSolvedCount;
+          }
+          if (p.name === "LeetCode" && !lcRes.error) {
+            if (lcRes.solved) {
+              updatedPlatform.solved = lcRes.solved.solvedProblem?.toString() || p.solved;
+            }
+            if (lcRes.contest) {
+              updatedPlatform.rating = Math.round(lcRes.contest.contestRating).toString();
+              updatedPlatform.rank = lcRes.contest.contestGlobalRanking 
+                ? `#${lcRes.contest.contestGlobalRanking.toLocaleString()}` 
+                : p.rank;
+            }
+          }
+          if (p.name === "CodeChef" && !ccRes.error) {
+            if (ccRes.rating) updatedPlatform.rating = ccRes.rating.toString();
+            if (ccRes.stars) updatedPlatform.rank = ccRes.stars;
+            if (ccRes.solved) updatedPlatform.solved = ccRes.solved.toString();
+          }
+          return updatedPlatform;
+        }));
+        
+        setCurrDisplay(prev => {
+          if (!prev) return prev;
+          let updatedPrev = { ...prev };
+          if (prev.name === "Codeforces" && cfInfoRes.status === "OK" && cfInfoRes.result?.length > 0) {
+            const info = cfInfoRes.result[0];
+            updatedPrev.rating = info.rating ? info.rating.toString() : prev.rating;
+            updatedPrev.rank = info.rank ? info.rank.charAt(0).toUpperCase() + info.rank.slice(1) : prev.rank;
+            updatedPrev.solved = cfSolvedCount;
+          }
+          if (prev.name === "LeetCode" && !lcRes.error) {
+            if (lcRes.solved) {
+              updatedPrev.solved = lcRes.solved.solvedProblem?.toString() || prev.solved;
+            }
+            if (lcRes.contest) {
+              updatedPrev.rating = Math.round(lcRes.contest.contestRating).toString();
+              updatedPrev.rank = lcRes.contest.contestGlobalRanking 
+                ? `#${lcRes.contest.contestGlobalRanking.toLocaleString()}` 
+                : prev.rank;
+            }
+          }
+          if (prev.name === "CodeChef" && !ccRes.error) {
+            if (ccRes.rating) updatedPrev.rating = ccRes.rating.toString();
+            if (ccRes.stars) updatedPrev.rank = ccRes.stars;
+            if (ccRes.solved) updatedPrev.solved = ccRes.solved.toString();
+          }
+          return updatedPrev;
+        });
+      } catch (err) {
+        console.error("Error fetching platform data:", err);
+      }
+    };
+
+    fetchPlatformData();
+  }, []);
 
   useEffect(() => {
     if (currDisplay && !backBtnActive) {
@@ -103,7 +188,7 @@ const MySkills = ({ id }: Props) => {
       <div className={styles.leftpanel}>
         <div className={styles.accordion}>
           <WinAccordion title="Competitive Programming">
-            {Platforms.map((platform, index) => (
+            {platforms.map((platform, index) => (
               <div
                 key={index}
                 className={styles.accordion_content_item}
