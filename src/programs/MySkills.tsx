@@ -86,11 +86,12 @@ const MySkills = ({ id }: Props) => {
   useEffect(() => {
     const fetchPlatformData = async () => {
       try {
-        const [cfInfoRes, cfStatusRes, lcRes, ccRes] = await Promise.all([
+        const [cfInfoRes, cfStatusRes, lcRes, ccRes, acRes] = await Promise.all([
           fetch("https://codeforces.com/api/user.info?handles=Arscker").then(res => res.json()).catch(() => ({ status: "FAILED" })),
           fetch("https://codeforces.com/api/user.status?handle=Arscker").then(res => res.json()).catch(() => ({ status: "FAILED" })),
           fetch("/api/leetcode?username=Arsckersan1314&limit=0").then(res => res.json()).catch(() => ({ error: true })),
-          fetch("/api/codechef?username=sit1si23cs008").then(res => res.json()).catch(() => ({ error: true }))
+          fetch("/api/codechef?username=sit1si23cs008").then(res => res.json()).catch(() => ({ error: true })),
+          fetch("/api/atcoder?username=Arscker").then(res => res.json()).catch(() => ({ error: true }))
         ]);
 
         let cfSolvedCount = "100+";
@@ -129,6 +130,11 @@ const MySkills = ({ id }: Props) => {
             if (ccRes.stars) updatedPlatform.rank = ccRes.stars;
             if (ccRes.solved) updatedPlatform.solved = ccRes.solved.toString();
           }
+          if (p.name === "AtCoder" && !acRes.error) {
+            if (acRes.rating) updatedPlatform.rating = acRes.rating.toString();
+            if (acRes.rank) updatedPlatform.rank = acRes.rank;
+            if (acRes.solved) updatedPlatform.solved = acRes.solved.toString();
+          }
           return updatedPlatform;
         }));
         
@@ -156,6 +162,11 @@ const MySkills = ({ id }: Props) => {
             if (ccRes.rating) updatedPrev.rating = ccRes.rating.toString();
             if (ccRes.stars) updatedPrev.rank = ccRes.stars;
             if (ccRes.solved) updatedPrev.solved = ccRes.solved.toString();
+          }
+          if (prev.name === "AtCoder" && !acRes.error) {
+            if (acRes.rating) updatedPrev.rating = acRes.rating.toString();
+            if (acRes.rank) updatedPrev.rank = acRes.rank;
+            if (acRes.solved) updatedPrev.solved = acRes.solved.toString();
           }
           return updatedPrev;
         });
