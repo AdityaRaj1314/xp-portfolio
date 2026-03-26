@@ -3,16 +3,25 @@ import styles from './Notepad.module.css';
 
 const Notepad = () => {
   const [text, setText] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
   const [wordWrap, setWordWrap] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const savedText = localStorage.getItem('notepad-content');
-    if (savedText) {
+    if (savedText !== null) {
       setText(savedText);
     }
+    setIsLoaded(true);
   }, []);
+
+  // Auto-save logic
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem('notepad-content', text);
+    }
+  }, [text, isLoaded]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -32,8 +41,8 @@ const Notepad = () => {
     setActiveMenu(null);
     switch (command) {
       case 'New':
-        localStorage.setItem('notepad-content', text);
         setText('');
+        localStorage.setItem('notepad-content', '');
         break;
       case 'Open':
         const saved = localStorage.getItem('notepad-content');

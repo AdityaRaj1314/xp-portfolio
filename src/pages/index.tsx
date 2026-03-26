@@ -152,26 +152,26 @@ export default function Home() {
             img={github}
           />
           <DesktopIcon
-            appID={8}
+            appID={6}
             doubleClick={handleOpenInstagram}
             title="My Instagram"
             img={instagramIcon}
           />
           <DesktopIcon
-            appID={6}
+            appID={7}
             doubleClick={() => handleRunApp(2)}
             title="My Work"
             img={cmd}
           />
 
           <DesktopIcon
-            appID={7}
+            appID={8}
             doubleClick={() => handleRunApp(4)}
             title="My Hobbies"
             img={solitare}
           />
           <DesktopIcon
-            appID={12}
+            appID={9}
             doubleClick={() => handleRunApp(12)}
             title="Notepad"
             img={notepadIcon}
